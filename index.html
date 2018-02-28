@@ -6,6 +6,23 @@
 <title>SnowBeach</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <?php 
+$handle = fopen("counter.txt", "r");
+if(!$handle){
+ echo "could not open the file" ;
+}
+else {
+	$counter = ( int ) fread ($handle,20) ;
+	fclose ($handle) ;
+	$counter++ ;
+	echo" <strong> you are visitor no ".  $counter . " < /strong >  " ;
+$handle =  fopen("counter.txt", "w" ) ;
+fwrite($handle,$counter) ;
+fclose ($handle) ;
+	}
+?>
+
+
 <style>
 body {margin:0;}
 .fa {
@@ -194,6 +211,30 @@ color:black;
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
 </div>
+<div style="width:207px; height:33px; position:absolute; z-index:999; top: 4px; left: 772px;">
+<?php 
+
+$handle = fopen("counter.txt", "r");
+if(!$handle){
+	
+ echo "could not open the file";
+}
+else {
+	
+	
+	$counter=(int )fread($handle,20);
+	fclose($handle);
+	$counter++;
+	echo" <strong> you are visitor no ". $counter  . " </strong > " ;
+$handle= fopen("counter.txt", "w" ) ;
+fwrite($handle,$counter) ;
+fclose ($handle) ;
+	}
+?>
+</div>
+
+
+Read more: http://mrbool.com/how-to-create-an-visitor-counter-with-php/28795#ixzz58Q3uwYp2
 
 <script>
 function myFunction() {
